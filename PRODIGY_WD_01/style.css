@@ -9,10 +9,15 @@ body{
     /* position: static;     */
 }
 header{
-    background-color: rgb(44, 44, 44);
+    background: linear-gradient(to bottom right, #80FF00, #84DD9D,#1CCA00 );
     height: 18vh;
+    font-size: 72px;
+    font-weight: 900;
+    color: black;
     width: 100%;
     position: static;
+    align-content: center;
+    text-align: center;
 }
 main{
     /* margin: 5px;
@@ -25,7 +30,7 @@ main nav p {
     position: static;
 }
 .navbar {
-    position: fixed;
+    position: sticky;
     top: 0;
     width: 100%;
     background-color: #333;
@@ -42,11 +47,13 @@ main nav p {
 }
 
 .navbar a:hover {
-    background-color: #555;
+    background: linear-gradient(to bottom right, #80FF00, #84DD9D,#1CCA00 );
+    color: black;
 }
 
 .navbar a.active {
-    background-color: #4CAF50;
+    background: linear-gradient(to bottom right, #80FF00, #84DD9D,#1CCA00 );
+    /* color: black; */
 }
 
 footer{
