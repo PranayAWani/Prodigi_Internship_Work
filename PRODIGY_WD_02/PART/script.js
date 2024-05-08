@@ -46,3 +46,25 @@ function updateDisplay() {
         (minutes < 10 ? "0" + minutes : minutes) + ":" +
         (seconds < 10 ? "0" + seconds : seconds);
 }
+
+function updateTime() {
+    const now = new Date();
+
+    const timeElement = document.getElementById('time');
+    const hours = String(now.getHours()).padStart(2, '0');
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    const seconds = String(now.getSeconds()).padStart(2, '0');
+    timeElement.textContent = `${hours}:${minutes}:${seconds}`;
+
+    const dateElement = document.getElementById('date');
+    const dateOptions = { year: 'numeric', month: 'long', day: 'numeric' };
+    dateElement.textContent = now.toLocaleDateString('en-US', dateOptions);
+
+    const dayElement = document.getElementById('day');
+    const dayOptions = { weekday: 'long' };
+    dayElement.textContent = now.toLocaleDateString('en-US', dayOptions);
+}
+
+setInterval(updateTime, 1000);
+
+updateTime();
