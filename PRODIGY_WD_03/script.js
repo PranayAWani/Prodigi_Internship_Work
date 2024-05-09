@@ -1,69 +1,75 @@
-const cells = document.querySelectorAll('[data-cell]');
-    const board = document.getElementById('board');
-    const status = document.getElementById('status');
-    const restartButton = document.getElementById('restart');
+// Variables to track game state
+let currentPlayer = 'X';
+let board = ['', '', '', '', '', '', '', '', ''];
 
-    let currentPlayer = 'X';
-    let gameActive = true;
-    let gameState = ['', '', '', '', '', '', '', '', ''];
+// Function to handle player moves
+function handleMove(index) {
+    if (board[index] === '') {
+        board[index] = currentPlayer;
+        renderBoard();
+        checkWinner();
+        currentPlayer = currentPlayer === 'X' ? 'O' : 'X'; // Switch players
+    }
+}
 
-    const winningConditions = [
-      [0, 1, 2],
-      [3, 4, 5],
-      [6, 7, 8],
-      [0, 3, 6],
-      [1, 4, 7],
-      [2, 5, 8],
-      [0, 4, 8],
-      [2, 4, 6]
+// Function to check for a winner
+function checkWinner() {
+    const winConditions = [
+        [0, 1, 2], [3, 4, 5], [6, 7, 8], // Rows
+        [0, 3, 6], [1, 4, 7], [2, 5, 8], // Columns
+        [0, 4, 8], [2, 4, 6] // Diagonals
     ];
 
-    function handleCellClick(event) {
-      const clickedCell = event.target;
-      const clickedCellIndex = parseInt(clickedCell.getAttribute('data-cell'));
-
-      if (gameState[clickedCellIndex] !== '' || !gameActive) {
-        return;
-      }
-
-      gameState[clickedCellIndex] = currentPlayer;
-      clickedCell.textContent = currentPlayer;
-      checkResult();
-    }
-
-    function checkResult() {
-      let roundWon = false;
-      for (let i = 0; i < winningConditions.length; i++) {
-        const [a, b, c] = winningConditions[i];
-        if (gameState[a] && gameState[a] === gameState[b] && gameState[a] === gameState[c]) {
-          roundWon = true;
-          break;
+    for (let condition of winConditions) {
+        const [a, b, c] = condition;
+        if (board[a] && board[a] === board[b] && board[a] === board[c]) {
+            alert(`${board[a]} wins!`);
+            resetGame();
+            return;
         }
-      }
-
-      if (roundWon) {
-        status.textContent = `Player ${currentPlayer} wins!`;
-        gameActive = false;
-        return;
-      }
-
-      if (!gameState.includes('')) {
-        status.textContent = "It's a draw!";
-        gameActive = false;
-        return;
-      }
-
-      currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
-      status.textContent = `Player ${currentPlayer}'s turn`;
     }
 
-    function restartGame() {
-      currentPlayer = 'X';
-      gameActive = true;
-      gameState = ['', '', '', '', '', '', '', '', ''];
-      status.textContent = `Player ${currentPlayer}'s turn`;
-      cells.forEach(cell => cell.textContent = '');
+    if (!board.includes('')) {
+        alert("It's a draw!");
+        resetGame();
     }
+}
 
-    cells.forEach(cell => cell.addEventListener('click', handleCellClick));
-    restartButton.addEventListener('click', restartGame);
+// Function to reset the game
+function resetGame() {
+    currentPlayer = 'X';
+    board = ['', '', '', '', '', '', '', '', ''];
+    renderBoard();
+}
+
+// Function to render the Tic-Tac-Toe board
+function renderBoard() {
+    const boardElement = document.getElementById('board');
+    boardElement.innerHTML = '';
+    board.forEach((cell, index) => {
+        const cellElement = document.createElement('div');
+        cellElement.classList.add('cell');
+        cellElement.textContent = cell;
+        cellElement.addEventListener('click', () => handleMove(index));
+        boardElement.appendChild(cellElement);
+    });
+}
+
+// Initialize the game
+renderBoard();
+// Function to update status display
+function updateStatus() {
+  const statusElement = document.getElementById('status');
+  statusElement.textContent = `Current Player: ${currentPlayer}`;
+}
+
+// Function to handle player moves
+function handleMove(index) {
+  if (board[index] === '') {
+      board[index] = currentPlayer;
+      renderBoard();
+      checkWinner();
+      updateStatus(); // Update status after each move
+      currentPlayer = currentPlayer === 'X' ? 'O' : 'X'; // Switch players
+  }
+}

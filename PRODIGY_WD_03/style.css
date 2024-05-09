@@ -17,6 +17,11 @@ h1{
   text-align: center;
   /* font-weight: 500; */
 }
+
+.turn{
+  color: white;
+}
+
 .board {
     display: grid;
     grid-template-columns: repeat(3, 150px);
@@ -29,6 +34,6 @@ h1{
     align-items: center;
     justify-content: center;
     font-size: 36px;
-    background-color: #ddd;
+    background-color: #dddddd31;
     cursor: pointer;
 }
