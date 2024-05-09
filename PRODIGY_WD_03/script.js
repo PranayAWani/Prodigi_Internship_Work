@@ -1,14 +1,25 @@
-// Variables to track game state
+// Variables to track game state and scores
 let currentPlayer = 'X';
 let board = ['', '', '', '', '', '', '', '', ''];
+let playerXScore = 0;
+let playerOScore = 0;
 
 // Function to handle player moves
 function handleMove(index) {
     if (board[index] === '') {
         board[index] = currentPlayer;
         renderBoard();
-        checkWinner();
-        currentPlayer = currentPlayer === 'X' ? 'O' : 'X'; // Switch players
+        const winner = checkWinner();
+        if (winner) {
+            updateScore(winner);
+            alert(`${winner} wins!`);
+            setTimeout(resetGame, 1000); // Reset game after 1 second
+        } else if (!board.includes('')) {
+            alert("It's a draw!");
+            setTimeout(resetGame, 1000); // Reset game after 1 second
+        } else {
+            currentPlayer = currentPlayer === 'X' ? 'O' : 'X'; // Switch players
+        }
     }
 }
 
@@ -23,26 +34,30 @@ function checkWinner() {
     for (let condition of winConditions) {
         const [a, b, c] = condition;
         if (board[a] && board[a] === board[b] && board[a] === board[c]) {
-            alert(`${board[a]} wins!`);
-            resetGame();
-            return;
+            return board[a]; // Return the winning player
         }
     }
 
-    if (!board.includes('')) {
-        alert("It's a draw!");
-        resetGame();
+    return null; // No winner
+}
+
+// Function to update the scores
+function updateScore(winner) {
+    if (winner === 'X') {
+        playerXScore++;
+        document.getElementById('playerXScore').textContent = `Player X: ${playerXScore}`;
+    } else if (winner === 'O') {
+        playerOScore++;
+        document.getElementById('playerOScore').textContent = `Player O: ${playerOScore}`;
     }
 }
 
 // Function to reset the game
 function resetGame() {
-  currentPlayer = 'X';
-  board = ['', '', '', '', '', '', '', '', ''];
-  renderBoard();
-  updateStatus(); // Reset status display
+    currentPlayer = 'X';
+    board = ['', '', '', '', '', '', '', '', ''];
+    renderBoard();
 }
-
 
 // Function to render the Tic-Tac-Toe board
 function renderBoard() {
@@ -57,21 +72,4 @@ function renderBoard() {
     });
 }
 
-// Initialize the game
 renderBoard();
-// Function to update status display
-function updateStatus() {
-  const statusElement = document.getElementById('status');
-  statusElement.textContent = `Current Player: ${currentPlayer}`;
-}
-
-// Function to handle player moves
-function handleMove(index) {
-  if (board[index] === '') {
-      board[index] = currentPlayer;
-      renderBoard();
-      checkWinner();
-      updateStatus(); // Update status after each move
-      currentPlayer = currentPlayer === 'X' ? 'O' : 'X'; // Switch players
-  }
-}

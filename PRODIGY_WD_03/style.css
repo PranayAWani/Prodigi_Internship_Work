@@ -51,10 +51,33 @@ video{
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 36px;
+    font-size: 72px;
+    font-weight: 500;
     background-color: transparent;
     border: 1px solid white;
     cursor: pointer;
     box-shadow: black 15px 20px 20px 2px;
     border-radius: 50px 0px 50px 0px ;
+    color: white;
+    font-family: "Imperial Script", cursive; 
+}
+
+.cell:hover{
+  box-shadow: inset black 9px 11px 20px 2px
+}
+#restart{
+  font-size: 24px;
+  background: transparent;
+  border: none;
+  color: white;
+  position: relative;
+}
+#scoreboard{
+  color: white;
+  position: relative;
+  top: -500px;
+  font-size: 28px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 }
