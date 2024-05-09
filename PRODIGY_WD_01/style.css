@@ -3,9 +3,9 @@
     margin: 0;
 }
 body{
-    background-color: black;
+    /* background-color: black; */
     font-size: 18px;
-    color: white;
+    /* color: white; */
     /* position: static;     */
 }
 header{
@@ -37,6 +37,8 @@ main nav p {
     z-index: 1000;
     display: flex;
     justify-content: center;
+    border: 1px solid white;
+    border-radius: 25px;
 }
 
 .navbar a {
@@ -49,6 +51,8 @@ main nav p {
 .navbar a:hover {
     background: linear-gradient(to bottom right, #80FF00, #84DD9D,#1CCA00 );
     color: black;
+    border-radius: 25px;
+    font-weight: 900    ;
 }
 
 .navbar a.active {
