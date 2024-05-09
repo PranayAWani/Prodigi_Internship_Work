@@ -28,6 +28,7 @@ main nav p {
     margin: 5px;
     padding: 10px;
     position: static;
+    text-align: justify;
 }
 .navbar {
     position: sticky;
