@@ -5,21 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tic Tac Toe</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Imperial+Script&family=Martel:wght@900&family=Poppins:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
-  <h1>Tic Tac Toe</h1>
-  <video src="background_video.mp4" autoplay mute></video>
+  <!-- >Tic Tac Toe</h1> -->
+  <div class="head">Tic - Tac - Toe</div>
+  <video src="background_video.mp4" autoplay muted playsinline loop controls="false"></video>
+
   <div class="turn" id="status">Player X's turn</div>
   <div class="board" id="board">
+    <div class="cell cells" data-cell></div>
+    <div class="cell" data-cell></div>
+    <div class="cell celles" data-cell></div>
     <div class="cell" data-cell></div>
     <div class="cell" data-cell></div>
     <div class="cell" data-cell></div>
+    <div class="cell cellses" data-cell></div>
     <div class="cell" data-cell></div>
-    <div class="cell" data-cell></div>
-    <div class="cell" data-cell></div>
-    <div class="cell" data-cell></div>
-    <div class="cell" data-cell></div>
-    <div class="cell" data-cell></div>
+    <div class="cell cell4" data-cell></div>
   </div>
   <button id="restart">Restart Game</button>
 

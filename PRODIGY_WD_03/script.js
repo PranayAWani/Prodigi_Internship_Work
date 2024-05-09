@@ -37,10 +37,12 @@ function checkWinner() {
 
 // Function to reset the game
 function resetGame() {
-    currentPlayer = 'X';
-    board = ['', '', '', '', '', '', '', '', ''];
-    renderBoard();
+  currentPlayer = 'X';
+  board = ['', '', '', '', '', '', '', '', ''];
+  renderBoard();
+  updateStatus(); // Reset status display
 }
+
 
 // Function to render the Tic-Tac-Toe board
 function renderBoard() {
