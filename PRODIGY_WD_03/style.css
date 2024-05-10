@@ -12,6 +12,9 @@ video{
   position: fixed;
   margin: 0;
   /* overflow-y: auto; */
+  /* filter: contrast(1); */
+  /* filter: brightness(-10); */
+  /* filter: saturate(0); */
 }
 
 .imperial-script-regular {
@@ -58,7 +61,7 @@ video{
     cursor: pointer;
     box-shadow: black 15px 20px 20px 2px;
     border-radius: 50px 0px 50px 0px ;
-    color: white;
+    color: wheat;
     font-family: "Imperial Script", cursive; 
 }
 
