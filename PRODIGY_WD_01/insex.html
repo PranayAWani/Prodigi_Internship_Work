@@ -5,6 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Navigation Bar</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        @media  screen and (max-width:400px ) {
+            .navbar{
+                /* width: 25%; */
+                justify-content: start;
+                display: grid;
+                grid-template-columns: 1fr;
+                /* grid-template-rows: 1fr; */
+                flex-wrap: wrap;
+                position: relative;
+                left: 0;
+                margin-left: 0;
+                border-radius: 0;
+                
+            }
+            main{
+                object-fit: fill;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
